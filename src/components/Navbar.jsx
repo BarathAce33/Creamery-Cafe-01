@@ -40,8 +40,8 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       scrolled 
-        ? 'bg-[#07130C]/90 backdrop-blur-xl border-b border-[#F5BF42]/20 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.8)]' 
-        : 'bg-gradient-to-b from-[#07130C]/90 via-[#07130C]/50 to-transparent py-5'
+        ? 'theme-bg-main border-b theme-border py-3 shadow-lg' 
+        : 'theme-bg-main opacity-95 border-b theme-border py-4'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         
@@ -61,21 +61,21 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-gold-gradient drop-shadow-md">
+              <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight theme-text-gold drop-shadow-sm">
                 CREAMERY
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] uppercase tracking-widest font-mono font-semibold bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/40 rounded-full">
+              <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] uppercase tracking-widest font-mono font-semibold theme-bg-sec theme-text-gold border theme-border rounded-full">
                 Peelamedu
               </span>
             </div>
-            <p className="text-[10px] text-[#A7F3D0] tracking-wider uppercase font-medium">
+            <p className="text-[10px] theme-text-sub tracking-wider uppercase font-medium">
               The Gold Standard in Milkshakes
             </p>
           </div>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1 bg-[#0F271B]/70 border border-[#F5BF42]/20 rounded-full px-4 py-1.5 backdrop-blur-md shadow-inner">
+        <nav className="hidden lg:flex items-center gap-1 theme-bg-sec border theme-border rounded-full px-4 py-1.5 backdrop-blur-md shadow-inner">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive = activeSection === link.id;
@@ -85,8 +85,8 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
                 onClick={() => scrollTo(link.id)}
                 className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#F5BF42] to-[#D49819] text-[#07130C] shadow-[0_0_15px_rgba(245,191,66,0.5)] font-bold'
-                    : 'text-[#C1E1CE] hover:text-[#F5BF42] hover:bg-[#1A3E2B]/50'
+                    ? 'theme-btn-primary font-bold shadow-md'
+                    : 'theme-text-sub hover:theme-text-gold'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -103,19 +103,19 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
           <div className="relative">
             <button
               onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#0F271B] border border-[#F5BF42]/40 text-xs font-mono font-bold text-[#F5BF42] hover:bg-[#F5BF42]/20 transition shadow-md"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full theme-bg-sec border theme-border text-xs font-mono font-bold theme-text-gold hover:opacity-90 transition shadow-md"
               title="Switch Café Design Theme"
             >
-              <Palette className="w-3.5 h-3.5 text-[#F5BF42] animate-pulse" />
+              <Palette className="w-3.5 h-3.5 theme-text-gold animate-pulse" />
               <span className="hidden sm:inline">Theme</span>
-              <span className="text-[10px] bg-[#F5BF42] text-[#07130C] px-1.5 py-0.5 rounded-full font-extrabold">
+              <span className="text-[10px] theme-btn-primary px-1.5 py-0.5 rounded-full font-extrabold">
                 {themes.find(t => t.id === currentTheme)?.icon || '🟢'}
               </span>
             </button>
 
             {themeDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-64 bg-[#0F271B] border border-[#F5BF42]/30 rounded-2xl p-2 shadow-2xl z-50 backdrop-blur-2xl animate-fadeIn">
-                <span className="text-[10px] font-mono text-[#F5BF42] uppercase px-3 py-1 block font-bold">
+              <div className="absolute right-0 mt-2 w-64 theme-bg-sec border theme-border rounded-2xl p-2 shadow-2xl z-50 backdrop-blur-2xl animate-fadeIn">
+                <span className="text-[10px] font-mono theme-text-gold uppercase px-3 py-1 block font-bold">
                   Select Theme Skin:
                 </span>
                 {themes.map((t) => (
@@ -127,8 +127,8 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
                     }}
                     className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
                       currentTheme === t.id
-                        ? 'bg-[#F5BF42] text-[#07130C] font-bold shadow-md'
-                        : 'text-[#C1E1CE] hover:bg-[#07130C] hover:text-[#F5BF42]'
+                        ? 'theme-btn-primary font-bold shadow-md'
+                        : 'theme-text-sub hover:theme-bg-main hover:theme-text-gold'
                     }`}
                   >
                     <div className="flex items-center gap-2">
@@ -145,46 +145,43 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
           {/* Shake Studio Button */}
           <button
             onClick={onOpenStudio}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#0F271B] border border-[#F5BF42]/30 text-xs font-mono font-bold text-[#F5BF42] hover:bg-[#F5BF42]/15 transition"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full theme-bg-sec border theme-border text-xs font-mono font-bold theme-text-gold hover:opacity-90 transition"
             title="Open Build-Your-Own Shake Studio"
           >
-            <Wand2 className="w-3.5 h-3.5 text-[#F5BF42]" />
+            <Wand2 className="w-3.5 h-3.5 theme-text-gold" />
             <span>Shake Studio</span>
           </button>
 
           {/* Gold Loyalty Rewards Button */}
           <button
             onClick={onOpenLoyalty}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#0F271B] border border-[#10B981]/30 text-xs font-mono font-bold text-[#34D399] hover:bg-[#10B981]/15 transition"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full theme-bg-sec border theme-border text-xs font-mono font-bold theme-text-gold hover:opacity-90 transition"
             title="View Creamery Gold Rewards"
           >
-            <Award className="w-3.5 h-3.5 text-[#34D399]" />
+            <Award className="w-3.5 h-3.5 theme-text-gold" />
             <span>340 Coins</span>
           </button>
 
           {/* Staff Portal Button */}
           <button
             onClick={onOpenDemo}
-            className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-full theme-btn-primary text-xs font-mono font-bold hover:scale-105 transition-all shadow-md"
             title="Open Staff & Kitchen Portal"
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-[#10B981] via-[#F5BF42] to-[#10B981] rounded-full animate-shimmer"></span>
-            <span className="relative flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#07130C] text-xs font-mono font-bold text-[#F5BF42] group-hover:bg-[#0F271B] transition-all">
-              <Cpu className="w-3.5 h-3.5 text-[#10B981] animate-spin-slow" />
-              <span className="hidden sm:inline">Staff Portal</span>
-              <span className="sm:hidden">Staff</span>
-            </span>
+            <Cpu className="w-3.5 h-3.5 animate-spin-slow" />
+            <span className="hidden sm:inline">Staff Portal</span>
+            <span className="sm:hidden">Staff</span>
           </button>
 
           {/* WhatsApp Cart Button */}
           <button
             onClick={onOpenCart}
-            className="relative flex items-center justify-center p-2 sm:px-3.5 sm:py-2 rounded-full bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-bold text-xs shadow-[0_0_20px_rgba(245,191,66,0.35)] hover:shadow-[0_0_30px_rgba(245,191,66,0.6)] hover:scale-105 active:scale-95 transition-all duration-300"
+            className="relative flex items-center justify-center p-2 sm:px-3.5 sm:py-2 rounded-full theme-btn-primary font-bold text-xs shadow-md hover:scale-105 active:scale-95 transition-all duration-300"
           >
             <ShoppingBag className="w-4 h-4" />
             <span className="hidden md:inline ml-1.5">Cart</span>
             {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 bg-[#EF4444] text-white font-mono text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#07130C] animate-bounce shadow-md">
+              <span className="absolute -top-1.5 -right-1.5 bg-[#EF4444] text-white font-mono text-[11px] font-extrabold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white animate-bounce shadow-md">
                 {cartCount}
               </span>
             )}
@@ -193,7 +190,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-xl bg-[#0F271B] border border-[#F5BF42]/30 text-[#F5BF42]"
+            className="lg:hidden p-2 rounded-xl theme-bg-sec border theme-border theme-text-gold"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
           </button>
@@ -202,23 +199,23 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#07130C]/95 border-b border-[#F5BF42]/20 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-3 mt-2 shadow-2xl animate-fadeIn">
+        <div className="lg:hidden theme-bg-main border-b theme-border backdrop-blur-2xl px-4 pt-3 pb-6 space-y-3 mt-2 shadow-2xl animate-fadeIn">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
               <button
                 key={link.id}
                 onClick={() => scrollTo(link.id)}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-[#EAF4EE] hover:bg-[#0F271B] hover:text-[#F5BF42] border border-transparent hover:border-[#F5BF42]/30 transition"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold theme-text-main hover:theme-bg-sec hover:theme-text-gold border border-transparent hover:theme-border transition"
               >
-                <Icon className="w-4 h-4 text-[#F5BF42]" />
+                <Icon className="w-4 h-4 theme-text-gold" />
                 {link.label}
               </button>
             );
           })}
           
-          <div className="pt-2 border-t border-[#F5BF42]/20 space-y-2">
-            <span className="text-[10px] font-mono text-[#F5BF42] uppercase block font-bold">Switch Theme Skin:</span>
+          <div className="pt-2 border-t theme-border space-y-2">
+            <span className="text-[10px] font-mono theme-text-gold uppercase block font-bold">Switch Theme Skin:</span>
             <div className="grid grid-cols-3 gap-1.5">
               {themes.map((t) => (
                 <button
@@ -229,8 +226,8 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
                   }}
                   className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center border transition ${
                     currentTheme === t.id
-                      ? 'bg-[#F5BF42] text-[#07130C] border-[#F5BF42]'
-                      : 'bg-[#0F271B] text-[#C1E1CE] border-[#F5BF42]/20'
+                      ? 'theme-btn-primary font-bold'
+                      : 'theme-bg-sec theme-text-sub theme-border'
                   }`}
                 >
                   {t.icon} {t.name.split(' ')[0]}

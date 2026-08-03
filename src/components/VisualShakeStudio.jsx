@@ -89,19 +89,19 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-md animate-fadeIn flex items-center justify-center p-3 sm:p-6">
-      <div className="relative w-full max-w-4xl glass-panel rounded-3xl border border-[#F5BF42]/40 bg-[#0F271B] text-[#EAF4EE] overflow-hidden shadow-[0_0_60px_rgba(245,191,66,0.25)] flex flex-col max-h-[90vh]">
+      <div className="relative w-full max-w-4xl glass-panel rounded-3xl border theme-border theme-bg-sec theme-text-main overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="p-6 bg-[#07130C] border-b border-[#F5BF42]/20 flex items-center justify-between">
+        <div className="p-6 theme-bg-main border-b theme-border flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#F5BF42]/10 border border-[#F5BF42]/30 flex items-center justify-center text-[#F5BF42] animate-bounce">
+            <div className="w-10 h-10 rounded-2xl theme-bg-sec border theme-border flex items-center justify-center theme-text-gold animate-bounce">
               <Wand2 className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-serif font-bold text-xl text-gold-gradient">
+              <h2 className="font-serif font-bold text-xl theme-text-gold">
                 BUILD-YOUR-OWN SHAKE STUDIO
               </h2>
-              <p className="text-xs text-[#A7F3D0]">
+              <p className="text-xs theme-text-sub">
                 Customize base milk, flavor profile, thickness & toppings in real-time.
               </p>
             </div>
@@ -109,7 +109,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full bg-[#0F271B] text-[#C1E1CE] hover:text-[#F5BF42] border border-[#F5BF42]/20 transition hover:scale-105"
+            className="p-2 rounded-full theme-bg-sec theme-text-sub hover:theme-text-gold border theme-border transition hover:scale-105"
           >
             <X className="w-5 h-5" />
           </button>
@@ -119,7 +119,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
         <div className="flex-1 overflow-y-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Animated Visual Preview */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-[#07130C]/90 border border-[#F5BF42]/20 relative shadow-inner overflow-hidden">
+          <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl theme-bg-main border theme-border relative shadow-inner overflow-hidden">
             
             {/* Ambient Backlight Glow */}
             <div 
@@ -140,7 +140,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
             )}
 
             {/* Visual Glass Cup Render */}
-            <div className="relative w-44 h-64 rounded-b-[40px] border-4 border-white/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] flex flex-col justify-end overflow-hidden p-2 transition-all duration-500 bg-[#0F271B]/70 backdrop-blur-md">
+            <div className="relative w-44 h-64 rounded-b-[40px] border-4 border-white/30 shadow-2xl flex flex-col justify-end overflow-hidden p-2 transition-all duration-500 theme-bg-sec backdrop-blur-md">
               
               {/* Glass Reflection Highlight */}
               <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none z-20" />
@@ -195,10 +195,10 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
                 type="text"
                 value={shakeName}
                 onChange={(e) => setShakeName(e.target.value)}
-                className="w-full text-center font-serif text-base sm:text-lg font-bold text-[#F5BF42] bg-[#07130C] border-b-2 border-[#F5BF42]/40 focus:border-[#F5BF42] focus:outline-none px-3 py-1.5 rounded-t-xl transition shadow-md"
+                className="w-full text-center font-serif text-base sm:text-lg font-bold theme-text-gold theme-bg-main border-b-2 theme-border focus:border-current focus:outline-none px-3 py-1.5 rounded-t-xl transition shadow-md"
                 placeholder="My Signature Creation"
               />
-              <span className="font-mono text-2xl font-extrabold text-[#F5BF42] block mt-3 drop-shadow-[0_2px_10px_rgba(245,191,66,0.5)]">
+              <span className="font-mono text-2xl font-extrabold theme-text-gold block mt-3 drop-shadow-md">
                 ₹{totalPrice}
               </span>
             </div>
@@ -210,7 +210,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
             
             {/* Base Flavor */}
             <div>
-              <label className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider block mb-2.5">
                 1. Select Flavor Profile:
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -220,8 +220,8 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
                     onClick={() => setFlavorBase(f.id)}
                     className={`p-3 rounded-xl text-xs font-bold text-left border transition-all duration-200 flex items-center justify-between ${
                       flavorBase === f.id
-                        ? 'bg-[#F5BF42] text-[#07130C] border-[#F5BF42] shadow-[0_0_18px_rgba(245,191,66,0.45)] font-bold scale-[1.02]'
-                        : 'bg-[#07130C] text-[#C1E1CE] border-[#F5BF42]/20 hover:border-[#F5BF42]/50 hover:text-[#F5BF42]'
+                        ? 'theme-btn-primary font-bold shadow-md scale-[1.02]'
+                        : 'theme-bg-main theme-text-sub border theme-border hover:theme-text-gold'
                     }`}
                   >
                     <span>{f.label}</span>
@@ -233,7 +233,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
 
             {/* Base Milk */}
             <div>
-              <label className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider block mb-2.5">
                 2. Select Milk Base:
               </label>
               <div className="grid grid-cols-3 gap-2">
@@ -244,7 +244,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
                     className={`p-2.5 rounded-xl text-xs font-semibold border text-center transition ${
                       baseMilk === b.id
                         ? 'bg-[#10B981] text-white font-bold border-[#10B981] shadow-md'
-                        : 'bg-[#07130C] text-[#C1E1CE] border-[#F5BF42]/20 hover:border-[#F5BF42]/40'
+                        : 'theme-bg-main theme-text-sub border theme-border hover:theme-text-gold'
                     }`}
                   >
                     {b.label}
@@ -255,7 +255,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
 
             {/* Toppings Selection */}
             <div>
-              <label className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider block mb-2.5">
+              <label className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider block mb-2.5">
                 3. Choose Crunch & Toppings:
               </label>
               <div className="space-y-2">
@@ -267,13 +267,13 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
                       onClick={() => toggleTopping(t.id)}
                       className={`p-3 rounded-xl border text-xs font-semibold flex items-center justify-between cursor-pointer transition-all duration-200 ${
                         isSelected
-                          ? 'bg-[#1A3E2B] border-[#F5BF42] text-[#F5BF42] shadow-sm'
-                          : 'bg-[#07130C] border-[#F5BF42]/20 text-[#C1E1CE] hover:border-[#F5BF42]/40'
+                          ? 'theme-bg-main border-current theme-text-gold shadow-sm'
+                          : 'theme-bg-main border-transparent theme-text-sub hover:theme-border'
                       }`}
                     >
                       <div className="flex items-center gap-2.5">
                         <div className={`w-4 h-4 rounded flex items-center justify-center border ${
-                          isSelected ? 'bg-[#F5BF42] border-[#F5BF42] text-[#07130C]' : 'border-[#F5BF42]/30'
+                          isSelected ? 'theme-btn-primary border-current' : 'border-current'
                         }`}>
                           {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                         </div>
@@ -282,7 +282,7 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
                           <span>{t.label}</span>
                         </span>
                       </div>
-                      <span className="font-mono text-[#34D399] font-bold">+₹{t.price}</span>
+                      <span className="font-mono theme-text-gold font-bold">+₹{t.price}</span>
                     </div>
                   );
                 })}
@@ -294,14 +294,14 @@ export default function VisualShakeStudio({ isOpen, onClose, onAddToCart }) {
         </div>
 
         {/* Footer */}
-        <div className="p-5 bg-[#07130C] border-t border-[#F5BF42]/20 flex items-center justify-between">
+        <div className="p-5 theme-bg-main border-t theme-border flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xs text-[#C1E1CE] uppercase font-mono">Total Price:</span>
-            <span className="font-mono text-xl font-extrabold text-[#F5BF42]">₹{totalPrice}</span>
+            <span className="text-xs theme-text-sub uppercase font-mono">Total Price:</span>
+            <span className="font-mono text-xl font-extrabold theme-text-gold">₹{totalPrice}</span>
           </div>
           <button
             onClick={handleAddCustomShakeToCart}
-            className="px-6 py-3 rounded-2xl bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-extrabold text-xs shadow-[0_0_20px_rgba(245,191,66,0.4)] hover:shadow-[0_0_30px_rgba(245,191,66,0.7)] hover:scale-105 transition flex items-center gap-2"
+            className="px-6 py-3 rounded-2xl theme-btn-primary font-extrabold text-xs shadow-lg hover:scale-105 transition flex items-center gap-2"
           >
             <ShoppingBag className="w-4 h-4" />
             Add Custom Creation to Cart
