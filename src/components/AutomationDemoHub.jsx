@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { Cpu, X, Printer, TrendingUp, Sliders, Calculator, Lock, KeyRound, CheckCircle2, ShieldCheck, RefreshCw, Send, PhoneCall } from 'lucide-react';
+import { Cpu, X, Printer, TrendingUp, Sliders, Lock, KeyRound, CheckCircle2, ShieldCheck, RefreshCw, Send, PhoneCall } from 'lucide-react';
 
 export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, reservationPasses }) {
   const [activeTab, setActiveTab] = useState('kds');
   const [pinEntered, setPinEntered] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [pinError, setPinError] = useState(false);
-
-  const [dailyOrders, setDailyOrders] = useState(45);
-  const [avgOrderValue, setAvgOrderValue] = useState(380);
   
   const [rules, setRules] = useState([
     { id: 'r1', name: 'WhatsApp Receipt Auto-Generator', desc: 'Instantly format & dispatch WhatsApp order confirmation to customer.', active: true },
@@ -84,11 +81,6 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
       printWindow.close();
     }, 250);
   };
-
-  const monthlyGrossSales = dailyOrders * avgOrderValue * 30;
-  const aggregatorCommissionLoss = Math.round(monthlyGrossSales * 0.28);
-  const directPortalSavings = Math.round(aggregatorCommissionLoss * 0.85);
-  const annualSavings = directPortalSavings * 12;
 
   if (!isOpen) return null;
 
@@ -214,17 +206,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                 Automated Workflow Rules
               </button>
 
-              <button
-                onClick={() => setActiveTab('roi')}
-                className={`px-4 py-2.5 rounded-t-2xl text-xs font-mono font-bold flex items-center gap-2 border-t border-x transition ${
-                  activeTab === 'roi'
-                    ? 'bg-[#0F271B] text-[#F5BF42] border-[#F5BF42]/30 font-bold shadow-md'
-                    : 'text-[#C1E1CE] border-transparent hover:text-[#F5BF42]'
-                }`}
-              >
-                <Calculator className="w-4 h-4 text-[#34D399]" />
-                Commission Savings Calculator
-              </button>
+
             </div>
 
             {/* Tab Body */}
@@ -384,72 +366,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                 </div>
               )}
 
-              {/* TAB 4: ROI & Savings Calculator */}
-              {activeTab === 'roi' && (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider flex items-center gap-2">
-                      <Calculator className="w-4 h-4" />
-                      Direct Order Commission Savings Calculator
-                    </span>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-2xl bg-[#07130C]/80 border border-[#F5BF42]/20">
-                    <div>
-                      <label className="text-xs font-mono font-bold text-[#EAF4EE] block mb-2">
-                        Estimated Daily Online Orders: <span className="text-[#F5BF42] text-sm">{dailyOrders} Orders/day</span>
-                      </label>
-                      <input
-                        type="range"
-                        min="10"
-                        max="150"
-                        step="5"
-                        value={dailyOrders}
-                        onChange={(e) => setDailyOrders(parseInt(e.target.value))}
-                        className="w-full accent-[#F5BF42]"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-xs font-mono font-bold text-[#EAF4EE] block mb-2">
-                        Average Order Value (AOV): <span className="text-[#F5BF42] text-sm">₹{avgOrderValue}</span>
-                      </label>
-                      <input
-                        type="range"
-                        min="150"
-                        max="1000"
-                        step="25"
-                        value={avgOrderValue}
-                        onChange={(e) => setAvgOrderValue(parseInt(e.target.value))}
-                        className="w-full accent-[#F5BF42]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="glass-panel p-5 rounded-2xl border border-red-500/30 bg-red-950/20">
-                      <span className="text-[10px] font-mono text-red-400 uppercase">Monthly Aggregator Commission Loss</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-red-400 mt-1">
-                        ₹{aggregatorCommissionLoss.toLocaleString('en-IN')}
-                      </h3>
-                    </div>
-
-                    <div className="glass-panel p-5 rounded-2xl border border-[#10B981]/30 bg-[#10B981]/10">
-                      <span className="text-[10px] font-mono text-[#34D399] uppercase">Net Monthly Savings</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-[#34D399] mt-1">
-                        ₹{directPortalSavings.toLocaleString('en-IN')}
-                      </h3>
-                    </div>
-
-                    <div className="glass-panel p-5 rounded-2xl border border-[#F5BF42]/30 bg-[#F5BF42]/10">
-                      <span className="text-[10px] font-mono text-[#F5BF42] uppercase">Annual Boost to Bottom Line</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-[#F5BF42] mt-1">
-                        ₹{annualSavings.toLocaleString('en-IN')}
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              )}
 
             </div>
           </>
