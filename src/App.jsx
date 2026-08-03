@@ -225,6 +225,8 @@ export default function App() {
         onClose={() => setIsDemoOpen(false)}
         kitchenOrders={kitchenOrders}
         reservationPasses={reservationPasses}
+        currentTheme={currentTheme}
+        setCurrentTheme={setCurrentTheme}
       />
 
       <VisualShakeStudio

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Cpu, X, Printer, TrendingUp, Sliders, Lock, KeyRound, CheckCircle2, ShieldCheck, RefreshCw, Send, PhoneCall } from 'lucide-react';
+import { Cpu, X, Printer, TrendingUp, Sliders, Lock, KeyRound, CheckCircle2, ShieldCheck, RefreshCw, Send, PhoneCall, Palette } from 'lucide-react';
 
-export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, reservationPasses }) {
+export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, reservationPasses, currentTheme, setCurrentTheme }) {
   const [activeTab, setActiveTab] = useState('kds');
   const [pinEntered, setPinEntered] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -113,6 +113,22 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
           </div>
 
           <div className="flex items-center gap-2">
+            {setCurrentTheme && (
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0F271B] border border-[#F5BF42]/30">
+                <Palette className="w-3.5 h-3.5 text-[#F5BF42]" />
+                <select
+                  value={currentTheme || 'gold-emerald'}
+                  onChange={(e) => setCurrentTheme(e.target.value)}
+                  className="bg-transparent text-[#F5BF42] text-xs font-mono font-bold focus:outline-none cursor-pointer"
+                  title="Switch Store Theme"
+                >
+                  <option value="gold-emerald" className="bg-[#07130C] text-[#EAF4EE]">🟢 Emerald & Gold</option>
+                  <option value="oat-honey" className="bg-[#07130C] text-[#EAF4EE]">🌾 Oat & Honey Gold</option>
+                  <option value="espresso-caramel" className="bg-[#07130C] text-[#EAF4EE]">☕ Espresso Caramel</option>
+                </select>
+              </div>
+            )}
+
             <button
               onClick={() => setIsAuthenticated(!isAuthenticated)}
               className="p-2 rounded-xl bg-[#0F271B] text-[#F5BF42] border border-[#F5BF42]/30 text-xs font-mono font-bold flex items-center gap-1 transition hover:scale-105"
