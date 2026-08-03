@@ -88,17 +88,17 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-md animate-fadeIn flex items-center justify-center p-3 sm:p-6">
       
       {/* Outer Container */}
-      <div className="relative w-full max-w-5xl glass-panel rounded-3xl border border-[#F5BF42]/40 bg-[#0F271B] text-[#EAF4EE] overflow-hidden shadow-[0_0_50px_rgba(245,191,66,0.2)] flex flex-col h-[90vh] max-h-[800px]">
+      <div className="relative w-full max-w-5xl rounded-3xl border theme-border theme-bg-sec theme-text-main overflow-hidden shadow-2xl flex flex-col h-[90vh] max-h-[800px]">
         
         {/* Header Bar */}
-        <div className="p-5 bg-[#07130C] border-b border-[#F5BF42]/20 flex items-center justify-between flex-wrap gap-2">
+        <div className="p-5 theme-bg-main border-b theme-border flex items-center justify-between flex-wrap gap-2">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#F5BF42]/10 border border-[#F5BF42]/30 flex items-center justify-center text-[#F5BF42]">
+            <div className="w-10 h-10 rounded-2xl theme-bg-sec border theme-border flex items-center justify-center theme-text-gold">
               <Cpu className="w-5 h-5 animate-spin-slow" />
             </div>
             <div>
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="font-serif font-bold text-lg text-gold-gradient">
+                <h2 className="font-serif font-bold text-lg theme-text-gold">
                   CREAMERY CAFÉ STAFF & KITCHEN PORTAL
                 </h2>
                 <span className="bg-[#10B981]/20 text-[#34D399] text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border border-[#10B981]/40 flex items-center gap-1">
@@ -106,7 +106,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                   LIVE PRODUCTION SYSTEM
                 </span>
               </div>
-              <p className="text-xs text-[#A7F3D0]">
+              <p className="text-xs theme-text-sub">
                 Peelamedu Branch KDS Stream, POS Thermal Ticket Printer & Sales Management.
               </p>
             </div>
@@ -114,24 +114,24 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
 
           <div className="flex items-center gap-2">
             {setCurrentTheme && (
-              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#0F271B] border border-[#F5BF42]/30">
-                <Palette className="w-3.5 h-3.5 text-[#F5BF42]" />
+              <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl theme-bg-sec border theme-border">
+                <Palette className="w-3.5 h-3.5 theme-text-gold" />
                 <select
                   value={currentTheme || 'gold-emerald'}
                   onChange={(e) => setCurrentTheme(e.target.value)}
-                  className="bg-transparent text-[#F5BF42] text-xs font-mono font-bold focus:outline-none cursor-pointer"
+                  className="bg-transparent theme-text-gold text-xs font-mono font-bold focus:outline-none cursor-pointer"
                   title="Switch Store Theme"
                 >
-                  <option value="gold-emerald" className="bg-[#07130C] text-[#EAF4EE]">🟢 Emerald & Gold</option>
-                  <option value="oat-honey" className="bg-[#07130C] text-[#EAF4EE]">🌾 Oat & Honey Gold</option>
-                  <option value="espresso-caramel" className="bg-[#07130C] text-[#EAF4EE]">☕ Espresso Caramel</option>
+                  <option value="gold-emerald" className="theme-bg-main theme-text-main">🟢 Emerald & Gold</option>
+                  <option value="oat-honey" className="theme-bg-main theme-text-main">🌾 Oat & Honey Gold</option>
+                  <option value="espresso-caramel" className="theme-bg-main theme-text-main">☕ Espresso Caramel</option>
                 </select>
               </div>
             )}
 
             <button
               onClick={() => setIsAuthenticated(!isAuthenticated)}
-              className="p-2 rounded-xl bg-[#0F271B] text-[#F5BF42] border border-[#F5BF42]/30 text-xs font-mono font-bold flex items-center gap-1 transition hover:scale-105"
+              className="p-2 rounded-xl theme-bg-sec theme-text-gold border theme-border text-xs font-mono font-bold flex items-center gap-1 transition hover:scale-105"
               title="Lock/Unlock Portal"
             >
               <Lock className="w-4 h-4 text-[#10B981]" />
@@ -140,7 +140,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
 
             <button
               onClick={onClose}
-              className="p-2 rounded-full bg-[#0F271B] text-[#C1E1CE] hover:text-[#F5BF42] border border-[#F5BF42]/20 transition hover:scale-105"
+              className="p-2 rounded-full theme-bg-sec theme-text-sub hover:theme-text-gold border theme-border transition hover:scale-105"
             >
               <X className="w-5 h-5" />
             </button>
@@ -150,14 +150,14 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
         {!isAuthenticated ? (
           /* PIN Security Gate */
           <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-[#07130C] border border-[#F5BF42]/30 flex items-center justify-center text-[#F5BF42]">
+            <div className="w-16 h-16 rounded-full theme-bg-main border theme-border flex items-center justify-center theme-text-gold">
               <KeyRound className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold font-serif text-gold-gradient">
+            <h3 className="text-xl font-bold font-serif theme-text-gold">
               Staff PIN Verification Required
             </h3>
-            <p className="text-xs text-[#C1E1CE] max-w-xs">
-              Enter Peelamedu store manager PIN to access kitchen order stream & POS rules. Default PIN: <strong className="text-[#F5BF42] font-mono">1234</strong>
+            <p className="text-xs theme-text-sub max-w-xs">
+              Enter Peelamedu store manager PIN to access kitchen order stream & POS rules. Default PIN: <strong className="theme-text-gold font-mono">1234</strong>
             </p>
 
             <form onSubmit={handlePinSubmit} className="flex gap-2 w-full max-w-xs mt-2">
@@ -167,11 +167,11 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                 value={pinEntered}
                 onChange={(e) => setPinEntered(e.target.value)}
                 placeholder="PIN (1234)"
-                className="w-full px-4 py-2.5 rounded-2xl bg-[#07130C] border border-[#F5BF42]/30 text-center font-mono text-lg text-[#F5BF42] focus:outline-none focus:border-[#F5BF42]"
+                className="w-full px-4 py-2.5 rounded-2xl theme-bg-input border theme-border text-center font-mono text-lg theme-text-gold focus:outline-none"
               />
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-2xl bg-[#F5BF42] text-[#07130C] font-extrabold text-xs shadow-md"
+                className="px-5 py-2.5 rounded-2xl theme-btn-primary font-extrabold text-xs shadow-md"
               >
                 Unlock
               </button>
@@ -185,16 +185,16 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
           /* Authenticated Staff Portal */
           <>
             {/* Tab Navigation */}
-            <div className="flex flex-wrap items-center gap-2 px-6 pt-4 border-b border-[#F5BF42]/20 bg-[#07130C]">
+            <div className="flex flex-wrap items-center gap-2 px-6 pt-4 border-b theme-border theme-bg-main">
               <button
                 onClick={() => setActiveTab('kds')}
                 className={`px-4 py-2.5 rounded-t-2xl text-xs font-mono font-bold flex items-center gap-2 border-t border-x transition ${
                   activeTab === 'kds'
-                    ? 'bg-[#0F271B] text-[#F5BF42] border-[#F5BF42]/30 font-bold shadow-md'
-                    : 'text-[#C1E1CE] border-transparent hover:text-[#F5BF42]'
+                    ? 'theme-bg-sec theme-text-gold theme-border font-bold shadow-md'
+                    : 'theme-text-sub border-transparent hover:theme-text-gold'
                 }`}
               >
-                <Printer className="w-4 h-4 text-[#F5BF42]" />
+                <Printer className="w-4 h-4 theme-text-gold" />
                 Kitchen Display System (KDS)
               </button>
 
@@ -202,8 +202,8 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                 onClick={() => setActiveTab('analytics')}
                 className={`px-4 py-2.5 rounded-t-2xl text-xs font-mono font-bold flex items-center gap-2 border-t border-x transition ${
                   activeTab === 'analytics'
-                    ? 'bg-[#0F271B] text-[#F5BF42] border-[#F5BF42]/30 font-bold shadow-md'
-                    : 'text-[#C1E1CE] border-transparent hover:text-[#F5BF42]'
+                    ? 'theme-bg-sec theme-text-gold theme-border font-bold shadow-md'
+                    : 'theme-text-sub border-transparent hover:theme-text-gold'
                 }`}
               >
                 <TrendingUp className="w-4 h-4 text-[#34D399]" />
@@ -214,11 +214,11 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                 onClick={() => setActiveTab('rules')}
                 className={`px-4 py-2.5 rounded-t-2xl text-xs font-mono font-bold flex items-center gap-2 border-t border-x transition ${
                   activeTab === 'rules'
-                    ? 'bg-[#0F271B] text-[#F5BF42] border-[#F5BF42]/30 font-bold shadow-md'
-                    : 'text-[#C1E1CE] border-transparent hover:text-[#F5BF42]'
+                    ? 'theme-bg-sec theme-text-gold theme-border font-bold shadow-md'
+                    : 'theme-text-sub border-transparent hover:theme-text-gold'
                 }`}
               >
-                <Sliders className="w-4 h-4 text-[#F5BF42]" />
+                <Sliders className="w-4 h-4 theme-text-gold" />
                 Automated Workflow Rules
               </button>
 
@@ -232,8 +232,8 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
               {activeTab === 'kds' && (
                 <div className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider flex items-center gap-2">
-                      <Printer className="w-4 h-4 text-[#F5BF42]" />
+                    <span className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider flex items-center gap-2">
+                      <Printer className="w-4 h-4 theme-text-gold" />
                       Live Kitchen Order Queue (Peelamedu Branch)
                     </span>
                     <span className="text-[11px] font-mono text-[#34D399] font-bold">
@@ -245,14 +245,14 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                     {orderList.map((ord, idx) => (
                       <div
                         key={idx}
-                        className="p-5 rounded-2xl bg-[#07130C]/90 border border-[#F5BF42]/20 shadow-md space-y-3 relative overflow-hidden"
+                        className="p-5 rounded-2xl theme-bg-card border theme-border shadow-md space-y-3 relative overflow-hidden"
                       >
-                        <div className="flex items-center justify-between border-b border-[#F5BF42]/20 pb-3 gap-2">
+                        <div className="flex items-center justify-between border-b theme-border pb-3 gap-2">
                           <div>
-                            <span className="font-mono text-sm font-extrabold text-[#F5BF42]">
+                            <span className="font-mono text-sm font-extrabold theme-text-gold">
                               Ticket #{ord.id}
                             </span>
-                            <span className="text-[10px] text-[#A7F3D0] block font-mono">
+                            <span className="text-[10px] theme-text-sub block font-mono">
                               {ord.timestamp || 'Just now'} • {ord.orderType.toUpperCase()} {ord.tableNumber ? `(${ord.tableNumber})` : ''}
                             </span>
                           </div>
@@ -261,7 +261,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                           <select
                             value={ord.status || 'Received'}
                             onChange={(e) => handleUpdateOrderStatus(ord.id, e.target.value)}
-                            className="bg-[#0F271B] text-[#F5BF42] text-[10px] font-mono font-bold px-2.5 py-1 rounded-full border border-[#F5BF42]/40 shadow-sm"
+                            className="theme-bg-sec theme-text-gold text-[10px] font-mono font-bold px-2.5 py-1 rounded-full border theme-border shadow-sm"
                           >
                             <option value="Received">Received</option>
                             <option value="In Kitchen">In Kitchen 🍳</option>
@@ -271,28 +271,28 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                         </div>
 
                         {/* Items */}
-                        <div className="space-y-1.5 text-xs text-[#EAF4EE]">
-                          <span className="text-[10px] font-mono text-[#C1E1CE]/70 block">Customer: {ord.customerName} ({ord.phone})</span>
+                        <div className="space-y-1.5 text-xs theme-text-main">
+                          <span className="text-[10px] font-mono theme-text-sub block">Customer: {ord.customerName} ({ord.phone})</span>
                           {ord.items.map((item, i) => (
                             <div key={i} className="flex justify-between font-mono font-semibold">
                               <span>{item.name} x{item.quantity}</span>
-                              <span className="text-[#F5BF42]">₹{(item.price || 200) * item.quantity}</span>
+                              <span className="theme-text-gold">₹{(item.price || 200) * item.quantity}</span>
                             </div>
                           ))}
                         </div>
 
                         {/* Action Bar */}
-                        <div className="pt-3 border-t border-[#F5BF42]/20 flex flex-wrap items-center justify-between gap-2">
-                          <span className="text-xs font-mono font-extrabold text-[#F5BF42]">
+                        <div className="pt-3 border-t theme-border flex flex-wrap items-center justify-between gap-2">
+                          <span className="text-xs font-mono font-extrabold theme-text-gold">
                             Total: ₹{ord.total}
                           </span>
 
                           <div className="flex flex-wrap gap-2">
                             <button
                               onClick={() => handlePrintThermalTicket(ord)}
-                              className="px-3 py-1.5 rounded-xl bg-[#0F271B] border border-[#F5BF42]/30 text-[#F5BF42] font-mono text-[10px] font-bold flex items-center gap-1 hover:bg-[#F5BF42]/20 transition"
+                              className="px-3 py-1.5 rounded-xl theme-bg-sec border theme-border theme-text-gold font-mono text-[10px] font-bold flex items-center gap-1 hover:opacity-80 transition"
                             >
-                              <Printer className="w-3.5 h-3.5 text-[#F5BF42]" />
+                              <Printer className="w-3.5 h-3.5 theme-text-gold" />
                               <span>Print POS Ticket</span>
                             </button>
 
@@ -317,22 +317,22 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
               {activeTab === 'analytics' && (
                 <div className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="glass-panel p-5 rounded-2xl border border-[#F5BF42]/20 bg-[#07130C]/80">
-                      <span className="text-[10px] font-mono text-[#C1E1CE] uppercase">Today's Revenue</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-[#F5BF42] mt-1">₹18,450</h3>
+                    <div className="glass-panel p-5 rounded-2xl border theme-border theme-bg-card">
+                      <span className="text-[10px] font-mono theme-text-sub uppercase">Today's Revenue</span>
+                      <h3 className="text-2xl font-extrabold font-mono theme-text-gold mt-1">₹18,450</h3>
                       <span className="text-[10px] text-[#34D399] font-mono">↑ +24% vs Last Week</span>
                     </div>
 
-                    <div className="glass-panel p-5 rounded-2xl border border-[#F5BF42]/20 bg-[#07130C]/80">
-                      <span className="text-[10px] font-mono text-[#C1E1CE] uppercase">Milkshakes Prepared</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-[#F5BF42] mt-1">84 Shakes</h3>
+                    <div className="glass-panel p-5 rounded-2xl border theme-border theme-bg-card">
+                      <span className="text-[10px] font-mono theme-text-sub uppercase">Milkshakes Prepared</span>
+                      <h3 className="text-2xl font-extrabold font-mono theme-text-gold mt-1">84 Shakes</h3>
                       <span className="text-[10px] text-[#34D399] font-mono">#1: Gold Lotus Biscoff</span>
                     </div>
 
-                    <div className="glass-panel p-5 rounded-2xl border border-[#F5BF42]/20 bg-[#07130C]/80">
-                      <span className="text-[10px] font-mono text-[#C1E1CE] uppercase">WhatsApp Order Share</span>
-                      <h3 className="text-2xl font-extrabold font-mono text-[#F5BF42] mt-1">78% Orders</h3>
-                      <span className="text-[10px] text-[#C1E1CE] font-mono">Zero Aggregator Fees</span>
+                    <div className="glass-panel p-5 rounded-2xl border theme-border theme-bg-card">
+                      <span className="text-[10px] font-mono theme-text-sub uppercase">WhatsApp Order Share</span>
+                      <h3 className="text-2xl font-extrabold font-mono theme-text-gold mt-1">78% Orders</h3>
+                      <span className="text-[10px] theme-text-sub font-mono">Zero Aggregator Fees</span>
                     </div>
                   </div>
                 </div>
@@ -342,7 +342,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
               {activeTab === 'rules' && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider flex items-center gap-2">
+                    <span className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider flex items-center gap-2">
                       <Sliders className="w-4 h-4" />
                       Store Automation & Customer Messaging Rules
                     </span>
@@ -352,10 +352,10 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                     {rules.map((rule) => (
                       <div
                         key={rule.id}
-                        className="p-4 rounded-2xl bg-[#07130C]/80 border border-[#F5BF42]/20 flex items-center justify-between gap-4"
+                        className="p-4 rounded-2xl theme-bg-card border theme-border flex items-center justify-between gap-4"
                       >
                         <div>
-                          <h4 className="text-xs font-bold text-[#EAF4EE] font-serif flex items-center gap-2">
+                          <h4 className="text-xs font-bold theme-text-main font-serif flex items-center gap-2">
                             {rule.name}
                             {rule.active && (
                               <span className="bg-[#10B981]/20 text-[#34D399] text-[9px] font-mono font-bold px-2 py-0.5 rounded-full border border-[#10B981]/40">
@@ -363,7 +363,7 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                               </span>
                             )}
                           </h4>
-                          <p className="text-[11px] text-[#C1E1CE]/80 mt-1">
+                          <p className="text-[11px] theme-text-sub mt-1">
                             {rule.desc}
                           </p>
                         </div>
@@ -371,10 +371,10 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
                         <button
                           onClick={() => toggleRule(rule.id)}
                           className={`w-12 h-6 rounded-full transition p-1 flex items-center ${
-                            rule.active ? 'bg-[#F5BF42] justify-end' : 'bg-[#0F271B] border border-[#F5BF42]/30 justify-start'
+                            rule.active ? 'theme-btn-primary justify-end' : 'theme-bg-sec border theme-border justify-start'
                           }`}
                         >
-                          <div className="w-4 h-4 rounded-full bg-[#07130C] shadow-md" />
+                          <div className="w-4 h-4 rounded-full theme-bg-main shadow-md" />
                         </button>
                       </div>
                     ))}
@@ -389,11 +389,11 @@ export default function AutomationDemoHub({ isOpen, onClose, kitchenOrders, rese
         )}
 
         {/* Footer Bar */}
-        <div className="p-4 bg-[#07130C] border-t border-[#F5BF42]/20 flex items-center justify-between text-xs text-[#C1E1CE]">
+        <div className="p-4 theme-bg-main border-t theme-border flex items-center justify-between text-xs theme-text-sub">
           <span>⚡ Creamery Café Store Management Suite</span>
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-extrabold text-xs shadow-md"
+            className="px-5 py-2 rounded-xl theme-btn-primary font-extrabold text-xs shadow-md hover:scale-105 transition"
           >
             Exit Staff Portal
           </button>
