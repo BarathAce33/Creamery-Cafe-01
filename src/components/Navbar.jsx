@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Calendar, MapPin, Sparkles, PhoneCall, Cpu, Award, Wand2, Menu as MenuIcon, X } from 'lucide-react';
+import { ShoppingBag, Calendar, MapPin, Sparkles, PhoneCall, Cpu, Award, Wand2, Menu as MenuIcon, X, Palette } from 'lucide-react';
 import { cafeInfo } from '../data/menuData';
 
-export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio, onOpenLoyalty, activeSection, setActiveSection }) {
+export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio, onOpenLoyalty, activeSection, setActiveSection, currentTheme, setCurrentTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,12 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
     { id: 'reservations', label: 'Book Table', icon: Calendar },
     { id: 'location', label: 'Find Us', icon: MapPin },
     { id: 'enquiry', label: 'Contact', icon: PhoneCall },
+  ];
+
+  const themes = [
+    { id: 'gold-emerald', name: 'Emerald & Gold (Classic)', icon: '🟢', badge: 'Active Brand' },
+    { id: 'vanilla-rose', name: 'Vanilla & Rose Pink', icon: '🌸', badge: 'Pastel Gourmet' },
+    { id: 'espresso-caramel', name: 'Espresso & Caramel', icon: '☕', badge: 'Midnight Cocoa' },
   ];
 
   const scrollTo = (id) => {
@@ -89,9 +96,52 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
           })}
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Buttons & Theme Switcher */}
         <div className="flex items-center gap-2 sm:gap-2.5">
           
+          {/* Live Theme Toggle Selector Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#0F271B] border border-[#F5BF42]/40 text-xs font-mono font-bold text-[#F5BF42] hover:bg-[#F5BF42]/20 transition shadow-md"
+              title="Switch Café Design Theme"
+            >
+              <Palette className="w-3.5 h-3.5 text-[#F5BF42] animate-pulse" />
+              <span className="hidden sm:inline">Theme</span>
+              <span className="text-[10px] bg-[#F5BF42] text-[#07130C] px-1.5 py-0.5 rounded-full font-extrabold">
+                {themes.find(t => t.id === currentTheme)?.icon || '🟢'}
+              </span>
+            </button>
+
+            {themeDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-64 bg-[#0F271B] border border-[#F5BF42]/30 rounded-2xl p-2 shadow-2xl z-50 backdrop-blur-2xl animate-fadeIn">
+                <span className="text-[10px] font-mono text-[#F5BF42] uppercase px-3 py-1 block font-bold">
+                  Select Theme Skin:
+                </span>
+                {themes.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => {
+                      setCurrentTheme(t.id);
+                      setThemeDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition ${
+                      currentTheme === t.id
+                        ? 'bg-[#F5BF42] text-[#07130C] font-bold shadow-md'
+                        : 'text-[#C1E1CE] hover:bg-[#07130C] hover:text-[#F5BF42]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span>{t.icon}</span>
+                      <span>{t.name}</span>
+                    </div>
+                    <span className="text-[9px] font-mono opacity-80">{t.badge}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Shake Studio Button */}
           <button
             onClick={onOpenStudio}
@@ -166,21 +216,27 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
               </button>
             );
           })}
-          <div className="pt-2 grid grid-cols-2 gap-2 border-t border-[#F5BF42]/20">
-            <button
-              onClick={() => { onOpenStudio(); setMobileMenuOpen(false); }}
-              className="py-2.5 px-3 rounded-xl bg-[#0F271B] border border-[#F5BF42]/30 text-xs font-mono font-bold text-[#F5BF42] flex items-center justify-center gap-1.5"
-            >
-              <Wand2 className="w-3.5 h-3.5" />
-              Shake Studio
-            </button>
-            <button
-              onClick={() => { onOpenLoyalty(); setMobileMenuOpen(false); }}
-              className="py-2.5 px-3 rounded-xl bg-[#0F271B] border border-[#10B981]/30 text-xs font-mono font-bold text-[#34D399] flex items-center justify-center gap-1.5"
-            >
-              <Award className="w-3.5 h-3.5" />
-              Gold Rewards
-            </button>
+          
+          <div className="pt-2 border-t border-[#F5BF42]/20 space-y-2">
+            <span className="text-[10px] font-mono text-[#F5BF42] uppercase block font-bold">Switch Theme Skin:</span>
+            <div className="grid grid-cols-3 gap-1.5">
+              {themes.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    setCurrentTheme(t.id);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`py-2 px-1 rounded-xl text-[11px] font-bold text-center border transition ${
+                    currentTheme === t.id
+                      ? 'bg-[#F5BF42] text-[#07130C] border-[#F5BF42]'
+                      : 'bg-[#0F271B] text-[#C1E1CE] border-[#F5BF42]/20'
+                  }`}
+                >
+                  {t.icon} {t.name.split(' ')[0]}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}

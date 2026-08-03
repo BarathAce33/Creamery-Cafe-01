@@ -2,11 +2,6 @@
 
 @layer base {
   :root {
-    --color-dark-bg: #07130C;
-    --color-emerald-deep: #07130C;
-    --color-emerald-card: #0F271B;
-    --color-gold-main: #F5BF42;
-    --color-gold-dark: #D49819;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-cinzel: 'Cinzel', serif;
     --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -14,8 +9,7 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #07130C;
-    color: #EAF4EE;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1, h2, h3, .font-serif-title {
@@ -25,6 +19,77 @@
   .font-cinzel {
     font-family: var(--font-cinzel);
   }
+}
+
+/* THEME 1: Obsidian Emerald & Honey Gold (Default) */
+[data-theme="gold-emerald"] {
+  --bg-primary: #07130C;
+  --bg-secondary: #0F271B;
+  --bg-card: rgba(15, 39, 27, 0.85);
+  --text-main: #EAF4EE;
+  --text-gold: #F5BF42;
+  --text-sub: #C1E1CE;
+  --border-gold: rgba(245, 191, 66, 0.25);
+  --accent-mint: #34D399;
+  --btn-gold-bg: linear-gradient(135deg, #F5BF42 0%, #E5B239 100%);
+  --btn-gold-text: #07130C;
+}
+
+/* THEME 2: Vanilla Cream & Strawberry Rose Gold */
+[data-theme="vanilla-rose"] {
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #FFF0F5;
+  --bg-card: #FFFFFF;
+  --text-main: #2D4A3E;
+  --text-gold: #EC4899;
+  --text-sub: #8B1E3F;
+  --border-gold: rgba(244, 114, 182, 0.35);
+  --accent-mint: #DB2777;
+  --btn-gold-bg: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);
+  --btn-gold-text: #FFFFFF;
+}
+
+/* THEME 3: Midnight Espresso & Warm Caramel Fudge */
+[data-theme="espresso-caramel"] {
+  --bg-primary: #1A120B;
+  --bg-secondary: #2C1D11;
+  --bg-card: rgba(44, 29, 17, 0.9);
+  --text-main: #F8F4E6;
+  --text-gold: #D48C46;
+  --text-sub: #E6C594;
+  --border-gold: rgba(212, 140, 70, 0.35);
+  --accent-mint: #E5A93C;
+  --btn-gold-bg: linear-gradient(135deg, #D48C46 0%, #E5A93C 100%);
+  --btn-gold-text: #1A120B;
+}
+
+/* Dynamic Classes consuming theme variables */
+.theme-bg-main {
+  background-color: var(--bg-primary);
+}
+
+.theme-bg-sec {
+  background-color: var(--bg-secondary);
+}
+
+.theme-bg-card {
+  background-color: var(--bg-card);
+}
+
+.theme-text-main {
+  color: var(--text-main);
+}
+
+.theme-text-gold {
+  color: var(--text-gold);
+}
+
+.theme-text-sub {
+  color: var(--text-sub);
+}
+
+.theme-border {
+  border-color: var(--border-gold);
 }
 
 /* Custom Animations */
@@ -59,19 +124,11 @@
 
 /* Glassmorphism Cards */
 .glass-panel {
-  background: rgba(15, 39, 27, 0.7);
+  background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 191, 66, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.glass-panel-dark {
-  background: rgba(7, 19, 12, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(245, 191, 66, 0.25);
-  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
 }
 
 .glass-panel-hover {
@@ -79,31 +136,18 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(26, 62, 43, 0.85);
-  border-color: rgba(245, 191, 66, 0.5);
+  border-color: var(--text-gold);
   box-shadow: 0 12px 40px 0 rgba(245, 191, 66, 0.25);
   transform: translateY(-4px);
 }
 
 /* Gold Gradient Text Utility */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FFF1C5 0%, #F5BF42 50%, #D49819 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-gold);
 }
 
 .text-emerald-gradient {
-  background: linear-gradient(135deg, #A7F3D0 0%, #10B981 50%, #047857 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Futuristic Grid Background */
-.bg-cyber-grid {
-  background-image: 
-    linear-gradient(to right, rgba(245, 191, 66, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+  color: var(--accent-mint);
 }
 
 /* Custom Scrollbar */
@@ -111,13 +155,9 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #07130C;
+  background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A3E2B;
+  background: var(--text-gold);
   border-radius: 4px;
-  border: 1px solid rgba(245, 191, 66, 0.3);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #F5BF42;
 }

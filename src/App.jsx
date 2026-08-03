@@ -16,6 +16,24 @@ import { Wand2, CreditCard, Award } from 'lucide-react';
 export default function App() {
   const [activeSection, setActiveSection] = useState('menu');
 
+  // Live Theme Switcher State: 'gold-emerald' | 'vanilla-rose' | 'espresso-caramel'
+  const [currentTheme, setCurrentTheme] = useState(() => {
+    try {
+      return localStorage.getItem('creamery_theme') || 'gold-emerald';
+    } catch {
+      return 'gold-emerald';
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    try {
+      localStorage.setItem('creamery_theme', currentTheme);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [currentTheme]);
+
   // Initialize state with localStorage persistence for production
   const [cartItems, setCartItems] = useState(() => {
     try {
@@ -119,73 +137,79 @@ export default function App() {
     setReservationPasses([newPass, ...reservationPasses]);
   };
 
+  const cartTotalCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <div className="min-h-screen bg-[#07130C] text-[#EAF4EE] relative selection:bg-[#F5BF42] selection:text-[#07130C]">
+    <div className="min-h-screen theme-bg-main theme-text-main relative selection:bg-[#F5BF42] selection:text-[#07130C]">
       
-      {/* Top Navigation */}
+      {/* Navigation Bar */}
       <Navbar
-        cartCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
+        cartCount={cartTotalCount}
         onOpenCart={() => setIsCartOpen(true)}
         onOpenDemo={() => setIsDemoOpen(true)}
         onOpenStudio={() => setIsStudioOpen(true)}
         onOpenLoyalty={() => setIsLoyaltyOpen(true)}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
+        currentTheme={currentTheme}
+        setCurrentTheme={setCurrentTheme}
       />
 
-      {/* Hero Section */}
-      <Hero
-        onOpenCart={() => setIsCartOpen(true)}
-        onOpenDemo={() => setIsDemoOpen(true)}
-      />
+      {/* Main Page Layout Sections */}
+      <main>
+        <Hero
+          onOpenCart={() => setIsCartOpen(true)}
+          onOpenDemo={() => setIsDemoOpen(true)}
+        />
 
-      {/* Interactive Menu Section */}
-      <MenuSection onAddToCart={handleAddToCart} />
+        <MenuSection
+          onAddToCart={handleAddToCart}
+        />
 
-      {/* Table Reservation Section */}
-      <ReservationSection
-        onTriggerReservationAutomation={handleTriggerReservationAutomation}
-      />
+        <ReservationSection
+          onTriggerReservationAutomation={handleTriggerReservationAutomation}
+        />
 
-      {/* Google Maps & Location Section */}
-      <GoogleMapSection />
+        <GoogleMapSection />
 
-      {/* Customer Enquiry Section */}
-      <EnquirySection />
+        <EnquirySection />
+      </main>
 
       {/* Footer */}
       <Footer onOpenDemo={() => setIsDemoOpen(true)} />
 
-      {/* Floating Toolbar (Bottom Right) */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-2">
+      {/* Floating Action Quick Trigger Bar (Mobile & Desktop) */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#0F271B]/95 border border-[#F5BF42]/40 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.6)] animate-float">
         <button
           onClick={() => setIsStudioOpen(true)}
-          className="p-3 rounded-full bg-[#0F271B] border-2 border-[#F5BF42] text-[#F5BF42] shadow-[0_0_20px_rgba(245,191,66,0.4)] hover:scale-110 active:scale-95 transition"
-          title="Build Custom Shake"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#07130C] border border-[#F5BF42]/30 text-xs font-mono font-bold text-[#F5BF42] hover:bg-[#F5BF42]/20 transition"
         >
-          <Wand2 className="w-5 h-5" />
+          <Wand2 className="w-3.5 h-3.5 text-[#F5BF42]" />
+          <span>Build Shake</span>
         </button>
+
+        <span className="text-[#F5BF42]/30">•</span>
 
         <button
           onClick={() => setIsLoyaltyOpen(true)}
-          className="p-3 rounded-full bg-[#0F271B] border-2 border-[#10B981] text-[#34D399] shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:scale-110 active:scale-95 transition"
-          title="Gold Loyalty Club"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#07130C] border border-[#10B981]/30 text-xs font-mono font-bold text-[#34D399] hover:bg-[#10B981]/20 transition"
         >
-          <Award className="w-5 h-5" />
+          <Award className="w-3.5 h-3.5 text-[#34D399]" />
+          <span>340 Gold Coins</span>
         </button>
 
-        {cartItems.length > 0 && (
-          <button
-            onClick={() => setIsUPIDigitalBillOpen(true)}
-            className="p-3 rounded-full bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-extrabold shadow-[0_0_25px_rgba(245,191,66,0.6)] hover:scale-110 active:scale-95 transition"
-            title="Generate Table UPI Digital Bill"
-          >
-            <CreditCard className="w-5 h-5 stroke-[2.5]" />
-          </button>
-        )}
+        <span className="text-[#F5BF42]/30">•</span>
+
+        <button
+          onClick={() => setIsUPIDigitalBillOpen(true)}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] text-xs font-mono font-extrabold shadow-md hover:scale-105 transition"
+        >
+          <CreditCard className="w-3.5 h-3.5" />
+          <span>UPI Bill</span>
+        </button>
       </div>
 
-      {/* Slide-over WhatsApp Cart Drawer */}
+      {/* Drawers & Modals */}
       <CartDrawer
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
@@ -196,7 +220,6 @@ export default function App() {
         onTriggerKitchenOrder={handleTriggerKitchenOrder}
       />
 
-      {/* Café Staff & Kitchen Portal */}
       <AutomationDemoHub
         isOpen={isDemoOpen}
         onClose={() => setIsDemoOpen(false)}
@@ -204,21 +227,18 @@ export default function App() {
         reservationPasses={reservationPasses}
       />
 
-      {/* Build-Your-Own Shake Studio Modal */}
       <VisualShakeStudio
         isOpen={isStudioOpen}
         onClose={() => setIsStudioOpen(false)}
         onAddToCart={handleAddToCart}
       />
 
-      {/* UPI Digital Table Bill & QR Simulator */}
       <UPIDigitalBillModal
         isOpen={isUPIDigitalBillOpen}
         onClose={() => setIsUPIDigitalBillOpen(false)}
-        cartItems={cartItems}
+        billData={{ billId: 'CR-8821', table: 'Table 4', total: 670 }}
       />
 
-      {/* Creamery Gold Club Loyalty Modal */}
       <LoyaltyRewardsModal
         isOpen={isLoyaltyOpen}
         onClose={() => setIsLoyaltyOpen(false)}
