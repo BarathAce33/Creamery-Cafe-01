@@ -15,12 +15,12 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    const particles = Array.from({ length: 45 }, () => ({
+    const particles = Array.from({ length: 40 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
       radius: Math.random() * 2.5 + 0.5,
-      color: Math.random() > 0.4 ? '#F5BF42' : '#10B981',
-      alpha: Math.random() * 0.6 + 0.2,
+      color: Math.random() > 0.5 ? '#F5BF42' : '#10B981',
+      alpha: Math.random() * 0.5 + 0.2,
       speedX: (Math.random() - 0.5) * 0.4,
       speedY: (Math.random() - 0.5) * 0.4,
     }));
@@ -47,7 +47,7 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
         ctx.globalAlpha = p.alpha;
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur = 10;
         ctx.shadowColor = p.color;
         ctx.fill();
       });
@@ -72,24 +72,24 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-cyber-grid bg-[#07130C]">
+    <section className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden theme-bg-main">
       {/* Particle Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-40" />
 
       {/* Futuristic Radial Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#10B981]/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
-      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#F5BF42]/15 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#10B981]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow" />
+      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#F5BF42]/10 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         
         {/* Top Floating Badge */}
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0F271B]/90 border border-[#F5BF42]/40 backdrop-blur-xl shadow-[0_0_20px_rgba(245,191,66,0.2)] mb-8 animate-float">
-          <div className="flex items-center gap-1.5 text-[#F5BF42] font-mono text-xs font-semibold">
-            <Star className="w-3.5 h-3.5 fill-[#F5BF42] text-[#F5BF42]" />
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full theme-bg-sec border theme-border shadow-md mb-8 animate-float">
+          <div className="flex items-center gap-1.5 theme-text-gold font-mono text-xs font-semibold">
+            <Star className="w-3.5 h-3.5 fill-current text-current" />
             <span>4.9 / 5.0 Rating</span>
           </div>
-          <span className="text-[#F5BF42]/40">•</span>
-          <span className="text-[#34D399] font-mono text-xs font-semibold flex items-center gap-1">
+          <span className="opacity-30">•</span>
+          <span className="text-emerald-gradient font-mono text-xs font-semibold flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-[#10B981] animate-ping"></span>
             PEELAMEDU, COIMBATORE
           </span>
@@ -103,21 +103,21 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
               src="/logo.jpg" 
               alt="Creamery Cafe Classic Logo" 
               style={{ width: '100%', height: '100%', aspectRatio: '1 / 1', objectFit: 'cover' }}
-              className="relative w-full h-full aspect-square flex-shrink-0 rounded-full border-4 border-[#F5BF42] shadow-[0_0_40px_rgba(245,191,66,0.5)] transform transition hover:scale-105 duration-500"
+              className="relative w-full h-full aspect-square flex-shrink-0 rounded-full border-4 border-[#F5BF42] shadow-xl transform transition hover:scale-105 duration-500"
             />
           </div>
 
           <h1 className="mt-6 text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight">
-            <span className="block font-serif text-gold-gradient drop-shadow-[0_4px_25px_rgba(245,191,66,0.4)]">
+            <span className="block font-serif theme-text-gold drop-shadow-md">
               THE GOLD STANDARD
             </span>
-            <span className="block text-2xl sm:text-4xl md:text-5xl mt-2 text-[#EAF4EE] font-cinzel font-light tracking-wider">
+            <span className="block text-2xl sm:text-4xl md:text-5xl mt-2 theme-text-main font-cinzel font-light tracking-wider">
               IN MILKSHAKES & GOURMET CAFÉ
             </span>
           </h1>
 
-          <p className="mt-6 max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-[#B4D6C1] leading-relaxed font-normal">
-            Welcome to <strong className="text-[#F5BF42]">Creamery Café</strong>. Indulge in Peelamedu’s finest artisanal Lotus Biscoff thickshakes, fresh fruit creams, charcoal burgers, steamed momos, and automated 1-click ordering.
+          <p className="mt-6 max-w-3xl mx-auto text-base sm:text-lg md:text-xl theme-text-sub leading-relaxed font-normal">
+            Welcome to <strong className="theme-text-gold">Creamery Café</strong>. Indulge in Peelamedu’s finest artisanal Lotus Biscoff thickshakes, fresh fruit creams, charcoal burgers, steamed momos, and automated 1-click ordering.
           </p>
         </div>
 
@@ -127,9 +127,9 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
           {/* Order Menu Button */}
           <button
             onClick={scrollToMenu}
-            className="group relative inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-[#F5BF42] via-[#E5B239] to-[#D49819] text-[#07130C] font-extrabold text-sm sm:text-base tracking-wide shadow-[0_0_30px_rgba(245,191,66,0.5)] hover:shadow-[0_0_45px_rgba(245,191,66,0.8)] hover:scale-105 active:scale-95 transition-all duration-300"
+            className="group relative inline-flex items-center gap-3 px-7 py-4 rounded-2xl theme-btn-primary font-extrabold text-sm sm:text-base tracking-wide shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
           >
-            <Sparkles className="w-5 h-5 text-[#07130C] animate-spin-slow" />
+            <Sparkles className="w-5 h-5 animate-spin-slow" />
             <span>Explore Online Menu</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
           </button>
@@ -137,18 +137,18 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
           {/* Book Table Button */}
           <button
             onClick={scrollToReservation}
-            className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-[#0F271B]/80 hover:bg-[#1A3E2B] text-[#EAF4EE] border border-[#F5BF42]/40 backdrop-blur-xl font-bold text-sm sm:text-base shadow-lg hover:border-[#F5BF42] hover:shadow-[0_0_25px_rgba(245,191,66,0.25)] hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl theme-bg-sec theme-text-main border theme-border font-bold text-sm sm:text-base shadow-lg hover:scale-105 transition-all duration-300"
           >
-            <Calendar className="w-5 h-5 text-[#F5BF42]" />
+            <Calendar className="w-5 h-5 theme-text-gold" />
             <span>Reserve Table</span>
           </button>
 
           {/* Staff Portal Button */}
           <button
             onClick={onOpenDemo}
-            className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#10B981]/20 to-[#047857]/30 hover:from-[#10B981]/30 hover:to-[#047857]/40 text-[#34D399] border border-[#10B981]/50 backdrop-blur-xl font-mono font-bold text-sm sm:text-base hover:shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:scale-105 transition-all duration-300"
+            className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl theme-bg-sec theme-text-gold border theme-border font-mono font-bold text-sm sm:text-base hover:scale-105 transition-all duration-300"
           >
-            <Play className="w-4 h-4 fill-[#34D399]" />
+            <Play className="w-4 h-4 fill-current" />
             <span>Staff Portal & KDS</span>
           </button>
 
@@ -157,36 +157,36 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
         {/* Feature Grid Highlights */}
         <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
           
-          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border border-[#F5BF42]/20">
-            <div className="w-10 h-10 rounded-xl bg-[#F5BF42]/10 flex items-center justify-center text-[#F5BF42] mb-3">
+          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border theme-border">
+            <div className="w-10 h-10 rounded-xl theme-bg-sec flex items-center justify-center theme-text-gold mb-3">
               <Flame className="w-5 h-5" />
             </div>
-            <h4 className="font-bold text-sm text-[#EAF4EE]">Gold Standard Shakes</h4>
-            <p className="text-xs text-[#A7F3D0]/80 mt-1">Lotus Biscoff, Nutella & Real Sitaphal Creams</p>
+            <h4 className="font-bold text-sm theme-text-main">Gold Standard Shakes</h4>
+            <p className="text-xs theme-text-sub mt-1">Lotus Biscoff, Nutella & Real Sitaphal Creams</p>
           </div>
 
-          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border border-[#F5BF42]/20">
-            <div className="w-10 h-10 rounded-xl bg-[#10B981]/10 flex items-center justify-center text-[#10B981] mb-3">
+          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border theme-border">
+            <div className="w-10 h-10 rounded-xl theme-bg-sec flex items-center justify-center theme-text-gold mb-3">
               <Zap className="w-5 h-5" />
             </div>
-            <h4 className="font-bold text-sm text-[#EAF4EE]">WhatsApp Ordering</h4>
-            <p className="text-xs text-[#A7F3D0]/80 mt-1">Direct kitchen ticket & instant receipt generation</p>
+            <h4 className="font-bold text-sm theme-text-main">WhatsApp Ordering</h4>
+            <p className="text-xs theme-text-sub mt-1">Direct kitchen ticket & instant receipt generation</p>
           </div>
 
-          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border border-[#F5BF42]/20">
-            <div className="w-10 h-10 rounded-xl bg-[#F5BF42]/10 flex items-center justify-center text-[#F5BF42] mb-3">
+          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border theme-border">
+            <div className="w-10 h-10 rounded-xl theme-bg-sec flex items-center justify-center theme-text-gold mb-3">
               <Calendar className="w-5 h-5" />
             </div>
-            <h4 className="font-bold text-sm text-[#EAF4EE]">Smart Table Booking</h4>
-            <p className="text-xs text-[#A7F3D0]/80 mt-1">Instant QR Reservation Pass for Peelamedu</p>
+            <h4 className="font-bold text-sm theme-text-main">Smart Table Booking</h4>
+            <p className="text-xs theme-text-sub mt-1">Instant QR Reservation Pass for Peelamedu</p>
           </div>
 
-          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border border-[#F5BF42]/20">
-            <div className="w-10 h-10 rounded-xl bg-[#10B981]/10 flex items-center justify-center text-[#10B981] mb-3">
+          <div className="glass-panel glass-panel-hover p-4 rounded-2xl border theme-border">
+            <div className="w-10 h-10 rounded-xl theme-bg-sec flex items-center justify-center theme-text-gold mb-3">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h4 className="font-bold text-sm text-[#EAF4EE]">Custom Café Automation</h4>
-            <p className="text-xs text-[#A7F3D0]/80 mt-1">Simulated real-time kitchen & customer workflows</p>
+            <h4 className="font-bold text-sm theme-text-main">Custom Café Automation</h4>
+            <p className="text-xs theme-text-sub mt-1">Simulated real-time kitchen & customer workflows</p>
           </div>
 
         </div>
@@ -195,7 +195,7 @@ export default function Hero({ onOpenCart, onOpenDemo }) {
         <div className="mt-12 flex justify-center">
           <button 
             onClick={scrollToMenu} 
-            className="text-[#F5BF42]/60 hover:text-[#F5BF42] transition animate-bounce p-2"
+            className="theme-text-gold opacity-75 hover:opacity-100 transition animate-bounce p-2"
           >
             <ChevronDown className="w-6 h-6" />
           </button>

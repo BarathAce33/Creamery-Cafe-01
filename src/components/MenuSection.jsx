@@ -63,41 +63,41 @@ export default function MenuSection({ onAddToCart }) {
   };
 
   return (
-    <section id="menu" className="py-20 relative bg-[#07130C]">
+    <section id="menu" className="py-20 relative theme-bg-main">
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#10B981]/10 border border-[#10B981]/30 text-[#34D399] font-mono text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#F5BF42]" />
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full theme-bg-sec border theme-border theme-text-gold font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
             Curated Artisanal Menu
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold font-serif text-gold-gradient drop-shadow-md">
+          <h2 className="text-3xl sm:text-5xl font-extrabold font-serif theme-text-gold drop-shadow-md">
             EXPLORE CREAMERY SPECIALTIES
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#C1E1CE]">
+          <p className="mt-3 text-sm sm:text-base theme-text-sub">
             Select from our world-famous thickshakes, gourmet charcoal burgers, tender momos & fresh fruit creams. Customized for instant WhatsApp ordering.
           </p>
         </div>
 
         {/* Search & Diet Filter Controls Bar */}
-        <div className="glass-panel p-4 rounded-2xl mb-8 border border-[#F5BF42]/20 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="glass-panel p-4 rounded-2xl mb-8 border theme-border flex flex-col md:flex-row items-center justify-between gap-4">
           
           {/* Search Box */}
           <div className="relative w-full md:w-80">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F5BF42]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 theme-text-gold" />
             <input
               type="text"
               placeholder="Search shakes, burgers, momos..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#07130C]/80 border border-[#F5BF42]/30 text-xs sm:text-sm text-[#EAF4EE] placeholder-[#C1E1CE]/50 focus:outline-none focus:border-[#F5BF42]"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl theme-bg-input border theme-border text-xs sm:text-sm theme-text-main placeholder-opacity-50 focus:outline-none focus:border-current"
             />
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#C1E1CE]/60 hover:text-[#F5BF42]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs theme-text-sub hover:theme-text-gold"
               >
                 Clear
               </button>
@@ -108,11 +108,11 @@ export default function MenuSection({ onAddToCart }) {
           <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto justify-end">
             
             {/* Diet Filter */}
-            <div className="bg-[#07130C]/80 p-1 rounded-xl border border-[#F5BF42]/20 flex items-center text-xs font-semibold">
+            <div className="theme-bg-input p-1 rounded-xl border theme-border flex items-center text-xs font-semibold">
               <button
                 onClick={() => setDietFilter('all')}
                 className={`px-3 py-1.5 rounded-lg transition ${
-                  dietFilter === 'all' ? 'bg-[#F5BF42] text-[#07130C] font-bold' : 'text-[#C1E1CE] hover:text-[#F5BF42]'
+                  dietFilter === 'all' ? 'theme-btn-primary font-bold' : 'theme-text-sub hover:theme-text-gold'
                 }`}
               >
                 All
@@ -120,7 +120,7 @@ export default function MenuSection({ onAddToCart }) {
               <button
                 onClick={() => setDietFilter('veg')}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition ${
-                  dietFilter === 'veg' ? 'bg-[#10B981] text-white font-bold' : 'text-[#C1E1CE] hover:text-[#F5BF42]'
+                  dietFilter === 'veg' ? 'bg-[#10B981] text-white font-bold' : 'theme-text-sub hover:theme-text-gold'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
@@ -129,7 +129,7 @@ export default function MenuSection({ onAddToCart }) {
               <button
                 onClick={() => setDietFilter('non-veg')}
                 className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition ${
-                  dietFilter === 'non-veg' ? 'bg-[#EF4444] text-white font-bold' : 'text-[#C1E1CE] hover:text-[#F5BF42]'
+                  dietFilter === 'non-veg' ? 'bg-[#EF4444] text-white font-bold' : 'theme-text-sub hover:theme-text-gold'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-[#EF4444]"></span>
@@ -142,11 +142,11 @@ export default function MenuSection({ onAddToCart }) {
               onClick={() => setShowBestsellersOnly(!showBestsellersOnly)}
               className={`px-3.5 py-2 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition ${
                 showBestsellersOnly
-                  ? 'bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] border-[#F5BF42] font-bold shadow-md'
-                  : 'bg-[#0F271B] border-[#F5BF42]/30 text-[#F5BF42] hover:bg-[#F5BF42]/10'
+                  ? 'theme-btn-primary font-bold shadow-md'
+                  : 'theme-bg-sec border theme-border theme-text-gold'
               }`}
             >
-              <Star className="w-3.5 h-3.5 fill-[#F5BF42] text-[#F5BF42]" />
+              <Star className="w-3.5 h-3.5 fill-current text-current" />
               Bestsellers
             </button>
 
@@ -165,8 +165,8 @@ export default function MenuSection({ onAddToCart }) {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`whitespace-nowrap flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-bold shadow-[0_0_15px_rgba(245,191,66,0.4)]'
-                    : 'bg-[#0F271B]/80 text-[#C1E1CE] border border-[#F5BF42]/20 hover:border-[#F5BF42]/60 hover:text-[#F5BF42]'
+                    ? 'theme-btn-primary font-bold shadow-md'
+                    : 'theme-bg-sec theme-text-sub border theme-border hover:theme-text-gold'
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -178,8 +178,8 @@ export default function MenuSection({ onAddToCart }) {
 
         {/* Menu Items Grid */}
         {filteredItems.length === 0 ? (
-          <div className="text-center py-16 glass-panel rounded-2xl border border-[#F5BF42]/20">
-            <p className="text-[#C1E1CE] text-lg">No culinary items found matching your filters.</p>
+          <div className="text-center py-16 glass-panel rounded-2xl border theme-border">
+            <p className="theme-text-sub text-lg">No culinary items found matching your filters.</p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
@@ -187,7 +187,7 @@ export default function MenuSection({ onAddToCart }) {
                 setDietFilter('all');
                 setShowBestsellersOnly(false);
               }}
-              className="mt-4 px-5 py-2 rounded-full bg-[#F5BF42] text-[#07130C] font-bold text-xs"
+              className="mt-4 px-5 py-2 rounded-full theme-btn-primary font-bold text-xs"
             >
               Reset Filters
             </button>
@@ -197,11 +197,11 @@ export default function MenuSection({ onAddToCart }) {
             {filteredItems.map((item) => (
               <div
                 key={item.id}
-                className="group glass-panel glass-panel-hover rounded-2xl overflow-hidden border border-[#F5BF42]/20 flex flex-col justify-between"
+                className="group glass-panel glass-panel-hover rounded-2xl overflow-hidden border theme-border flex flex-col justify-between"
               >
                 <div>
                   {/* Image Container */}
-                  <div className="relative h-52 overflow-hidden bg-[#07130C]">
+                  <div className="relative h-52 overflow-hidden theme-bg-main">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -213,54 +213,54 @@ export default function MenuSection({ onAddToCart }) {
                     />
 
                     {/* Diet Indicator Badge */}
-                    <div className="absolute top-3 left-3 bg-[#07130C]/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 flex items-center gap-1.5 shadow-md">
+                    <div className="absolute top-3 left-3 theme-bg-main backdrop-blur-md px-2.5 py-1 rounded-full border theme-border flex items-center gap-1.5 shadow-md">
                       <span className={`w-2.5 h-2.5 rounded-full ${item.isVeg ? 'bg-[#10B981]' : 'bg-[#EF4444]'}`}></span>
-                      <span className="text-[10px] font-mono font-bold text-white uppercase">
+                      <span className="text-[10px] font-mono font-bold theme-text-main uppercase">
                         {item.isVeg ? 'Veg' : 'Non-Veg'}
                       </span>
                     </div>
 
                     {/* Bestseller Flag */}
                     {item.isBestseller && (
-                      <div className="absolute top-3 right-3 bg-[#F5BF42] text-[#07130C] border border-[#F5BF42] text-[10px] font-mono font-extrabold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
-                        <Star className="w-3 h-3 fill-[#07130C]" />
+                      <div className="absolute top-3 right-3 theme-btn-primary text-[10px] font-mono font-extrabold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                        <Star className="w-3 h-3 fill-current" />
                         GOLD FAVORITE
                       </div>
                     )}
 
                     {/* Rating Badge */}
-                    <div className="absolute bottom-3 left-3 bg-[#07130C]/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#F5BF42]/30 text-[#F5BF42] text-xs font-mono font-bold flex items-center gap-1 shadow-md">
-                      <Star className="w-3.5 h-3.5 fill-[#F5BF42] text-[#F5BF42]" />
+                    <div className="absolute bottom-3 left-3 theme-bg-main backdrop-blur-md px-2.5 py-1 rounded-full border theme-border theme-text-gold text-xs font-mono font-bold flex items-center gap-1 shadow-md">
+                      <Star className="w-3.5 h-3.5 fill-current text-current" />
                       {item.rating} ({item.reviewsCount})
                     </div>
                   </div>
 
                   {/* Content Container */}
                   <div className="p-5">
-                    <span className="text-[11px] font-mono text-[#34D399] uppercase tracking-wider block font-medium">
+                    <span className="text-[11px] font-mono theme-text-gold uppercase tracking-wider block font-medium">
                       {item.tagline}
                     </span>
-                    <h3 className="text-lg font-bold text-[#EAF4EE] mt-1 font-serif group-hover:text-[#F5BF42] transition">
+                    <h3 className="text-lg font-bold theme-text-main mt-1 font-serif group-hover:theme-text-gold transition">
                       {item.name}
                     </h3>
-                    <p className="text-xs text-[#C1E1CE]/80 mt-2 line-clamp-2 leading-relaxed">
+                    <p className="text-xs theme-text-sub mt-2 line-clamp-2 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
                 </div>
 
                 {/* Footer Price & Add Button */}
-                <div className="p-5 pt-0 flex items-center justify-between mt-2 border-t border-[#F5BF42]/10 pt-4">
+                <div className="p-5 pt-0 flex items-center justify-between mt-2 border-t theme-border pt-4">
                   <div>
-                    <span className="text-[10px] text-[#C1E1CE]/60 block uppercase font-mono">Price</span>
-                    <span className="text-xl font-extrabold text-[#F5BF42] font-mono">
+                    <span className="text-[10px] theme-text-sub block uppercase font-mono">Price</span>
+                    <span className="text-xl font-extrabold theme-text-gold font-mono">
                       ₹{item.price}
                     </span>
                   </div>
 
                   <button
                     onClick={() => openCustomization(item)}
-                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-bold text-xs shadow-md hover:shadow-[0_0_20px_rgba(245,191,66,0.5)] hover:scale-105 transition active:scale-95"
+                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl theme-btn-primary font-bold text-xs shadow-md hover:scale-105 transition active:scale-95"
                   >
                     <Plus className="w-4 h-4 stroke-[3]" />
                     <span>Add to Order</span>
@@ -276,12 +276,12 @@ export default function MenuSection({ onAddToCart }) {
       {/* Customization Modal */}
       {customizingItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-lg bg-[#0F271B] rounded-3xl border border-[#F5BF42]/30 overflow-hidden shadow-2xl p-6">
+          <div className="relative w-full max-w-lg theme-bg-sec rounded-3xl border theme-border overflow-hidden shadow-2xl p-6">
             
             {/* Modal Close */}
             <button
               onClick={() => setCustomizingItem(null)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-[#07130C] text-[#C1E1CE] hover:text-[#F5BF42] border border-[#F5BF42]/30"
+              className="absolute top-4 right-4 p-2 rounded-full theme-bg-main theme-text-sub hover:theme-text-gold border theme-border"
             >
               <X className="w-5 h-5" />
             </button>
@@ -291,16 +291,16 @@ export default function MenuSection({ onAddToCart }) {
               <img 
                 src={customizingItem.image} 
                 alt={customizingItem.name} 
-                className="w-16 h-16 rounded-2xl object-cover border border-[#F5BF42]/30"
+                className="w-16 h-16 rounded-2xl object-cover border theme-border"
               />
               <div>
-                <span className="text-[10px] font-mono text-[#34D399] font-bold uppercase">
+                <span className="text-[10px] font-mono theme-text-gold font-bold uppercase">
                   {customizingItem.isVeg ? 'Pure Veg' : 'Non-Veg'}
                 </span>
-                <h3 className="text-lg font-bold text-[#EAF4EE] font-serif">
+                <h3 className="text-lg font-bold theme-text-main font-serif">
                   {customizingItem.name}
                 </h3>
-                <p className="text-xs text-[#F5BF42] font-mono font-bold">
+                <p className="text-xs theme-text-gold font-mono font-bold">
                   Base Price: ₹{customizingItem.price}
                 </p>
               </div>
@@ -309,7 +309,7 @@ export default function MenuSection({ onAddToCart }) {
             {/* Addons Selection */}
             {customizingItem.customizations && customizingItem.customizations.length > 0 && (
               <div className="mt-6">
-                <label className="text-xs font-mono font-bold text-[#F5BF42] uppercase tracking-wider block mb-3">
+                <label className="text-xs font-mono font-bold theme-text-gold uppercase tracking-wider block mb-3">
                   Customize & Add Extras:
                 </label>
                 <div className="space-y-2">
@@ -321,19 +321,19 @@ export default function MenuSection({ onAddToCart }) {
                         onClick={() => toggleAddon(addon)}
                         className={`flex items-center justify-between p-3 rounded-xl border cursor-pointer transition ${
                           isSelected
-                            ? 'bg-[#1A3E2B] border-[#F5BF42] text-[#F5BF42]'
-                            : 'bg-[#07130C]/80 border-[#F5BF42]/20 text-[#C1E1CE] hover:border-[#F5BF42]/40'
+                            ? 'theme-bg-main border-current theme-text-gold'
+                            : 'theme-bg-main border-transparent theme-text-sub hover:theme-border'
                         }`}
                       >
                         <div className="flex items-center gap-2.5 text-xs font-semibold">
                           <div className={`w-4 h-4 rounded-md flex items-center justify-center border ${
-                            isSelected ? 'bg-[#F5BF42] border-[#F5BF42] text-[#07130C]' : 'border-[#F5BF42]/30'
+                            isSelected ? 'theme-btn-primary border-current' : 'border-current'
                           }`}>
                             {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                           </div>
                           <span>{addon.name}</span>
                         </div>
-                        <span className="text-xs font-mono text-[#34D399] font-bold">
+                        <span className="text-xs font-mono theme-text-gold font-bold">
                           {addon.price > 0 ? `+₹${addon.price}` : 'Free'}
                         </span>
                       </div>
@@ -344,21 +344,21 @@ export default function MenuSection({ onAddToCart }) {
             )}
 
             {/* Quantity Selector & Total */}
-            <div className="mt-6 pt-4 border-t border-[#F5BF42]/20 flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t theme-border flex items-center justify-between">
               
-              <div className="flex items-center gap-3 bg-[#07130C] p-1.5 rounded-xl border border-[#F5BF42]/30">
+              <div className="flex items-center gap-3 theme-bg-main p-1.5 rounded-xl border theme-border">
                 <button
                   onClick={() => setItemQuantity(Math.max(1, itemQuantity - 1))}
-                  className="w-8 h-8 rounded-lg bg-[#0F271B] text-[#F5BF42] font-bold flex items-center justify-center hover:bg-[#F5BF42]/20"
+                  className="w-8 h-8 rounded-lg theme-bg-sec theme-text-gold font-bold flex items-center justify-center"
                 >
                   -
                 </button>
-                <span className="font-mono text-sm font-bold text-[#EAF4EE] px-2">
+                <span className="font-mono text-sm font-bold theme-text-main px-2">
                   {itemQuantity}
                 </span>
                 <button
                   onClick={() => setItemQuantity(itemQuantity + 1)}
-                  className="w-8 h-8 rounded-lg bg-[#0F271B] text-[#F5BF42] font-bold flex items-center justify-center hover:bg-[#F5BF42]/20"
+                  className="w-8 h-8 rounded-lg theme-bg-sec theme-text-gold font-bold flex items-center justify-center"
                 >
                   +
                 </button>
@@ -366,8 +366,8 @@ export default function MenuSection({ onAddToCart }) {
 
               {/* Total Calculation */}
               <div className="text-right">
-                <span className="text-[10px] text-[#C1E1CE]/60 block uppercase font-mono">Item Total</span>
-                <span className="text-xl font-extrabold text-[#F5BF42] font-mono">
+                <span className="text-[10px] theme-text-sub block uppercase font-mono">Item Total</span>
+                <span className="text-xl font-extrabold theme-text-gold font-mono">
                   ₹{(customizingItem.price + selectedAddons.reduce((sum, a) => sum + a.price, 0)) * itemQuantity}
                 </span>
               </div>
@@ -377,7 +377,7 @@ export default function MenuSection({ onAddToCart }) {
             {/* Confirm Add Button */}
             <button
               onClick={handleConfirmAddToCart}
-              className="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] font-extrabold text-sm shadow-lg hover:shadow-[0_0_25px_rgba(245,191,66,0.6)] transition"
+              className="mt-6 w-full py-3.5 rounded-xl theme-btn-primary font-extrabold text-sm shadow-lg transition"
             >
               Add to WhatsApp Order Cart
             </button>
