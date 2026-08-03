@@ -11,7 +11,6 @@ import VisualShakeStudio from './components/VisualShakeStudio';
 import UPIDigitalBillModal from './components/UPIDigitalBillModal';
 import LoyaltyRewardsModal from './components/LoyaltyRewardsModal';
 import Footer from './components/Footer';
-import { Wand2, CreditCard, Award } from 'lucide-react';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('menu');
@@ -178,36 +177,7 @@ export default function App() {
       {/* Footer */}
       <Footer onOpenDemo={() => setIsDemoOpen(true)} />
 
-      {/* Floating Action Quick Trigger Bar (Mobile & Desktop) */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 px-4 py-2.5 rounded-full bg-[#0F271B]/95 border border-[#F5BF42]/40 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.6)] animate-float">
-        <button
-          onClick={() => setIsStudioOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#07130C] border border-[#F5BF42]/30 text-xs font-mono font-bold text-[#F5BF42] hover:bg-[#F5BF42]/20 transition"
-        >
-          <Wand2 className="w-3.5 h-3.5 text-[#F5BF42]" />
-          <span>Build Shake</span>
-        </button>
 
-        <span className="text-[#F5BF42]/30">•</span>
-
-        <button
-          onClick={() => setIsLoyaltyOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#07130C] border border-[#10B981]/30 text-xs font-mono font-bold text-[#34D399] hover:bg-[#10B981]/20 transition"
-        >
-          <Award className="w-3.5 h-3.5 text-[#34D399]" />
-          <span>340 Gold Coins</span>
-        </button>
-
-        <span className="text-[#F5BF42]/30">•</span>
-
-        <button
-          onClick={() => setIsUPIDigitalBillOpen(true)}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#F5BF42] to-[#E5B239] text-[#07130C] text-xs font-mono font-extrabold shadow-md hover:scale-105 transition"
-        >
-          <CreditCard className="w-3.5 h-3.5" />
-          <span>UPI Bill</span>
-        </button>
-      </div>
 
       {/* Drawers & Modals */}
       <CartDrawer
