@@ -24,7 +24,7 @@ export default function Navbar({ cartCount, onOpenCart, onOpenDemo, onOpenStudio
 
   const themes = [
     { id: 'gold-emerald', name: 'Emerald & Gold (Classic)', icon: '🟢', badge: 'Active Brand' },
-    { id: 'vanilla-rose', name: 'Vanilla & Rose Pink', icon: '🌸', badge: 'Pastel Gourmet' },
+    { id: 'oat-honey', name: 'Oat Milk & Honey Gold', icon: '🌾', badge: 'Warm Light Mode' },
     { id: 'espresso-caramel', name: 'Espresso & Caramel', icon: '☕', badge: 'Midnight Cocoa' },
   ];
 

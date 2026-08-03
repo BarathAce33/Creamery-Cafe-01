@@ -16,7 +16,7 @@ import { Wand2, CreditCard, Award } from 'lucide-react';
 export default function App() {
   const [activeSection, setActiveSection] = useState('menu');
 
-  // Live Theme Switcher State: 'gold-emerald' | 'vanilla-rose' | 'espresso-caramel'
+  // Live Theme Switcher State: 'gold-emerald' | 'oat-honey' | 'espresso-caramel'
   const [currentTheme, setCurrentTheme] = useState(() => {
     try {
       return localStorage.getItem('creamery_theme') || 'gold-emerald';

@@ -39,21 +39,23 @@
   --nav-bg: rgba(7, 19, 12, 0.95);
 }
 
-/* THEME 2: Vanilla Cream & Strawberry Rose Gold */
+/* THEME 2: Oat Milk Cream & Amber Honey Gold (Clean Warm Light Mode) */
+[data-theme="oat-honey"],
 [data-theme="vanilla-rose"] {
-  --bg-primary: #FAF8F5;
-  --bg-secondary: #FFF0F5;
+  --bg-primary: #FDFBF7;
+  --bg-secondary: #F5EFE6;
   --bg-card: #FFFFFF;
-  --text-main: #2D4A3E;
-  --text-gold: #EC4899;
-  --text-sub: #8B1E3F;
-  --border-gold: rgba(244, 114, 182, 0.35);
-  --accent-mint: #DB2777;
-  --btn-gold-bg: #EC4899;
+  --text-main: #1C1917;
+  --text-gold: #D97706;
+  --text-sub: #78350F;
+  --border-gold: rgba(217, 119, 6, 0.3);
+  --accent-mint: #059669;
+  --btn-gold-bg: #D97706;
   --btn-gold-text: #FFFFFF;
-  --input-bg: #FFF5F8;
-  --nav-bg: rgba(255, 255, 255, 0.95);
+  --input-bg: #F5EFE6;
+  --nav-bg: rgba(253, 251, 247, 0.96);
 }
+
 
 /* THEME 3: Midnight Espresso & Warm Caramel Fudge */
 [data-theme="espresso-caramel"] {
